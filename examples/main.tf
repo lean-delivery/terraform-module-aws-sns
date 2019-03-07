@@ -1,5 +1,5 @@
 module "sns" {
-  source = "tf-module-aws-sns/"
+  source = "../"
   name   = "My_SNS"
 
   topic_subscription = {
