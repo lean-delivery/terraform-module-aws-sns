@@ -5,7 +5,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 module "sns" {
-  source = "../"
+  source                                   = "../"
   project                                  = "${var.project}"
   environment                              = "${var.environment}"
   tags                                     = "${var.tags}"
