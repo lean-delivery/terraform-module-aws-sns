@@ -4,6 +4,10 @@ locals {
     Environment = "${var.environment}"
     Project     = "${var.project}"
   }
+  subscription_id       = "${ var.topic_subscription["protocol"] == "" ? "" : element(concat(aws_sns_topic_subscription.this.*.id      , list("")), 0) }"
+  subscription_protocol = "${ var.topic_subscription["protocol"] == "" ? "" : element(concat(aws_sns_topic_subscription.this.*.protocol, list("")), 0) }"
+  subscription_endpoint = "${ var.topic_subscription["protocol"] == "" ? "" : element(concat(aws_sns_topic_subscription.this.*.endpoint, list("")), 0) }"
+  subscription_arn      = "${ var.topic_subscription["protocol"] == "" ? "" : element(concat(aws_sns_topic_subscription.this.*.arn     , list("")), 0) }"
 }
 
 resource "aws_sns_topic" "this" {
